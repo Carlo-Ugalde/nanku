@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@supabase/supabase-js'
 import { ALL_TABLES } from '@/lib/tables'
+import { isClosedDate } from '@/lib/closed-days'
 
 // Total bookable table units (hidden 07SA excluded — it's part of 06SA)
 const TOTAL_TABLES = ALL_TABLES.filter(t => !t.hidden).length // 22
@@ -34,6 +35,16 @@ export async function GET(request: NextRequest) {
   const date = request.nextUrl.searchParams.get('date')
   if (!date || !/^\d{4}-\d{2}-\d{2}$/.test(date)) {
     return NextResponse.json({ error: 'Invalid date parameter.' }, { status: 400 })
+  }
+
+  // Closed date (temporary closure or closed weekday): report every slot as unavailable
+  if (isClosedDate(date)) {
+    const closedAvailability: Record<string, { available: boolean; tablesLeft: number }> = {}
+    for (const slot of TIME_SLOTS) closedAvailability[slot] = { available: false, tablesLeft: 0 }
+    return NextResponse.json(
+      { availability: closedAvailability, closed: true },
+      { headers: { 'Cache-Control': 'no-store' } }
+    )
   }
 
   const supabase = createClient(
