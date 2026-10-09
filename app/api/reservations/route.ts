@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@supabase/supabase-js'
+import { isClosedDate } from '@/lib/closed-days'
 
 export async function POST(request: NextRequest) {
   try {
@@ -24,6 +25,9 @@ export async function POST(request: NextRequest) {
     const crTodayDate = crNowDate.toISOString().split('T')[0]
     if (date < crTodayDate) {
       return NextResponse.json({ error: 'Reservation date must be today or in the future.' }, { status: 400 })
+    }
+    if (isClosedDate(date)) {
+      return NextResponse.json({ error: 'We are closed on that date. Please choose another date.' }, { status: 400 })
     }
     if (!time || typeof time !== 'string') {
       return NextResponse.json({ error: 'Reservation time is required.' }, { status: 400 })

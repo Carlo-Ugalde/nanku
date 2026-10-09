@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import DatePickerModal from './DatePickerModal'
+import { isClosedDate, closureNotice } from '@/lib/closed-days'
 
 declare global {
   interface Window {
@@ -120,6 +121,9 @@ export default function ReservationForm({ lang = 'en' }: { lang?: 'en' | 'es' })
 
   // Min date = today in Costa Rica time (UTC-6)
   const crToday = new Date(Date.now() - 6 * 60 * 60 * 1000).toISOString().split('T')[0]
+
+  // Notice for a temporary closure that is upcoming or in progress (null once it has passed)
+  const closureText = closureNotice(lang, crToday)
 
   /* Fetch slot availability whenever date changes */
   const handleDateChange = async (date: string) => {
@@ -288,8 +292,10 @@ export default function ReservationForm({ lang = 'en' }: { lang?: 'en' | 'es' })
               value={form.date}
               onChange={handleDateChange}
               min={crToday}
+              isDateClosed={isClosedDate}
               placeholder="Select a date"
             />
+            {closureText && <p className="res-error">{closureText}</p>}
             {errors.date && <p className="res-error">{errors.date}</p>}
           </div>
 

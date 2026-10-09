@@ -23,6 +23,7 @@ interface Props {
   value: string        // YYYY-MM-DD or ''
   onChange: (date: string) => void
   min?: string         // YYYY-MM-DD — dates before this are disabled
+  isDateClosed?: (date: string) => boolean  // YYYY-MM-DD — closed dates are disabled
   placeholder?: string
 }
 
@@ -30,6 +31,7 @@ export default function DatePickerModal({
   value,
   onChange,
   min,
+  isDateClosed,
   placeholder = 'Select a date',
 }: Props) {
   const today = new Date()
@@ -81,8 +83,9 @@ export default function DatePickerModal({
     : null
 
   const isDisabled = (y: number, m: number, d: number) => {
-    if (!minDate) return false
     const dt = new Date(y, m, d); dt.setHours(0, 0, 0, 0)
+    if (isDateClosed?.(toYMD(y, m, d))) return true
+    if (!minDate) return false
     return dt < minDate
   }
   const isSelected = (y: number, m: number, d: number) => value === toYMD(y, m, d)
