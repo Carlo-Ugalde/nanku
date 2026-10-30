@@ -27,32 +27,35 @@ const menuJsonLd = {
   inLanguage: 'en',
   hasMenuSection: [
     { '@type': 'MenuSection', name: 'Appetizers', hasMenuItem: [
-      { '@type': 'MenuItem', name: 'Tuna Tartar', description: 'Tuna marinated with soy sauce, sesame, lemon, cucumber, red onions, served with crostini.', offers: { '@type': 'Offer', price: '9900', priceCurrency: 'CRC' } },
-      { '@type': 'MenuItem', name: 'Octopus Ceviche', description: 'Octopus marinated with citrus soy sauce served with smashed plantains.', offers: { '@type': 'Offer', price: '10500', priceCurrency: 'CRC' } },
+      { '@type': 'MenuItem', name: 'Tuna Tartare', description: 'Diced fresh tuna with avocado and cucumber in a spicy soy-sesame dressing. With crunchy crostini.', offers: { '@type': 'Offer', price: '10000', priceCurrency: 'CRC' } },
+      { '@type': 'MenuItem', name: 'Octopus Ceviche', description: 'Tender octopus in lime with avocado, soy and sesame. With crispy patacones.', offers: { '@type': 'Offer', price: '10500', priceCurrency: 'CRC' } },
     ] },
-    { '@type': 'MenuSection', name: 'Sea Food', hasMenuItem: [
-      { '@type': 'MenuItem', name: 'Grilled Octopus', description: 'Grilled octopus with sweet potato, salad, tomato chimichurri, and citrus concasse soy sauce.', offers: { '@type': 'Offer', price: '19000', priceCurrency: 'CRC' } },
-      { '@type': 'MenuItem', name: 'Teriyaki Tuna', description: 'Encrusted yellow-fin tuna with sesame seeds, served with vegetables, mashed potatoes, and teriyaki sauce.', offers: { '@type': 'Offer', price: '14200', priceCurrency: 'CRC' } },
+    { '@type': 'MenuSection', name: 'Sea & River', hasMenuItem: [
+      { '@type': 'MenuItem', name: 'Salmon Special', description: 'Salmon and jumbo shrimp in coconut milk with a sweet-and-tangy strawberry sauce, with rice and mixed vegetables.', offers: { '@type': 'Offer', price: '22500', priceCurrency: 'CRC' } },
+      { '@type': 'MenuItem', name: 'Malibu Shrimp Special', description: 'Jumbo shrimp in our creamy Malibu coconut-rum sauce, with pineapple rice and salad.', offers: { '@type': 'Offer', price: '21500', priceCurrency: 'CRC' } },
+      { '@type': 'MenuItem', name: 'Grilled Octopus', description: 'Tender grilled octopus in teriyaki glaze with silky sweet potato purée and salad.', offers: { '@type': 'Offer', price: '19500', priceCurrency: 'CRC' } },
+      { '@type': 'MenuItem', name: 'Teriyaki Tuna', description: 'Sesame-seared premium tuna in teriyaki glaze, with creamy mashed potato and mixed vegetables.', offers: { '@type': 'Offer', price: '14500', priceCurrency: 'CRC' } },
     ] },
     { '@type': 'MenuSection', name: 'Pasta', hasMenuItem: [
-      { '@type': 'MenuItem', name: 'Salmon Ravioli', description: 'Salmon ravioli with grana padana, Gorgonzola sauce, cherry tomatoes, mushrooms, basil and crostini.', offers: { '@type': 'Offer', price: '10200', priceCurrency: 'CRC' } },
+      { '@type': 'MenuItem', name: 'Salmon Fettuccine', description: 'Fettuccine with salmon, mushrooms and cherry tomato in a creamy white wine and parmesan sauce. With crunchy crostini.', offers: { '@type': 'Offer', price: '10500', priceCurrency: 'CRC' } },
     ] },
     { '@type': 'MenuSection', name: 'White Meat', hasMenuItem: [
-      { '@type': 'MenuItem', name: 'BBQ Pork Ribs', description: 'Pork ribs in pineapple BBQ sauce served with house salad, smashed plantains, refried beans and pico de gallo.', offers: { '@type': 'Offer', price: '12000', priceCurrency: 'CRC' } },
+      { '@type': 'MenuItem', name: 'BBQ Ribs', description: 'Tender pork ribs in our house BBQ sauce with pineapple, refried beans, crispy patacones, pico de gallo and salad.', offers: { '@type': 'Offer', price: '12000', priceCurrency: 'CRC' } },
     ] },
     { '@type': 'MenuSection', name: 'Steaks', hasMenuItem: [
-      { '@type': 'MenuItem', name: 'Surf and Turf', description: 'Premium steak and lobster tail combo served with rosemary potatoes, sweet plantain, jalapeno, and chimichurri.', offers: { '@type': 'Offer', price: '31900', priceCurrency: 'CRC' } },
-      { '@type': 'MenuItem', name: 'Rib Eye', offers: { '@type': 'Offer', price: '17500', priceCurrency: 'CRC' } },
-      { '@type': 'MenuItem', name: 'Sirloin Steak', offers: { '@type': 'Offer', price: '19500', priceCurrency: 'CRC' } },
+      { '@type': 'MenuItem', name: 'Churrasco', description: '350 g grilled churrasco, simple and full of flavor.', offers: { '@type': 'Offer', price: '16000', priceCurrency: 'CRC' } },
+      { '@type': 'MenuItem', name: 'Rib Eye', description: '350 g grilled Rib Eye: juicy, richly marbled and full of flavor.', offers: { '@type': 'Offer', price: '19500', priceCurrency: 'CRC' } },
+      { '@type': 'MenuItem', name: 'New York', description: '350 g grilled New York strip: firm, deeply savory and beefy.', offers: { '@type': 'Offer', price: '19500', priceCurrency: 'CRC' } },
     ] },
     { '@type': 'MenuSection', name: 'Vegetarian', hasMenuItem: [
-      { '@type': 'MenuItem', name: 'Parmesan Eggplant', description: 'Encrusted eggplant with Parmesan cheese served with tomato sauce, capers, olives, and house salad.', suitableForDiet: 'https://schema.org/VegetarianDiet', offers: { '@type': 'Offer', price: '8500', priceCurrency: 'CRC' } },
+      { '@type': 'MenuItem', name: 'Parmesan Eggplant', description: 'Eggplant in pomodoro sauce with capers and basil, gratinated with mozzarella. With fresh salad and crunchy crostini.', suitableForDiet: 'https://schema.org/VegetarianDiet', offers: { '@type': 'Offer', price: '8500', priceCurrency: 'CRC' } },
     ] },
     { '@type': 'MenuSection', name: 'Costa Rica', hasMenuItem: [
-      { '@type': 'MenuItem', name: 'Typical Casado', description: 'Rice, beans, picadillo, fried eggs, tortilla, cheese, salad and sweet plantain. Choice of beef, chicken or tilapia.', offers: { '@type': 'Offer', price: '7800', priceCurrency: 'CRC' } },
+      { '@type': 'MenuItem', name: 'Beef Casado', description: 'Classic Costa Rican casado with grilled beef, rice, beans, picadillo, fresh cheese, sweet ripe plantain and salad.', offers: { '@type': 'Offer', price: '10500', priceCurrency: 'CRC' } },
+      { '@type': 'MenuItem', name: 'Chicken or Fish Casado', description: 'Classic casado with grilled chicken breast or tilapia, rice, beans, picadillo, fresh cheese, sweet ripe plantain and salad.', offers: { '@type': 'Offer', price: '8000', priceCurrency: 'CRC' } },
     ] },
     { '@type': 'MenuSection', name: 'Desserts', hasMenuItem: [
-      { '@type': 'MenuItem', name: 'Chocolate Brownie with Vanilla Ice Cream', offers: { '@type': 'Offer', price: '4700', priceCurrency: 'CRC' } },
+      { '@type': 'MenuItem', name: 'Brownie with Ice Cream', description: 'Warm brownie with creamy vanilla ice cream that melts on contact.', offers: { '@type': 'Offer', price: '5000', priceCurrency: 'CRC' } },
     ] },
   ],
 }

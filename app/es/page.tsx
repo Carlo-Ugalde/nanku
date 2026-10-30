@@ -260,16 +260,16 @@ export default async function HomePageES() {
           <div className="dishes-grid">
             <Link href="/es/menu#steaks" className="dish-card fade-up">
               <div className="dish-img-wrap">
-                <img src="https://assets.cdn.filesafe.space/ftiLAicHGn0i3cqS3Rye/media/6a36fff11c5d711b35b9bb38.jpg" alt="Surf And Turf" loading="lazy" />
+                <img src="https://assets.cdn.filesafe.space/ftiLAicHGn0i3cqS3Rye/media/69c5fbd8146bc51f9eec8ca7.jpg" alt="Rib Eye" loading="lazy" />
                 <div className="dish-img-gradient"></div>
                 <span className="dish-badge orange">Elección del Chef</span>
               </div>
               <div className="dish-body">
                 <div className="dish-row">
-                  <h3 className="dish-name">Surf And Turf</h3>
-                  <span className="dish-price">₡31,900</span>
+                  <h3 className="dish-name">Rib Eye</h3>
+                  <span className="dish-price">₡19,500</span>
                 </div>
-                <p className="dish-desc">Combo de corte premium y cola de langosta servido con papas al romero, plátano maduro, jalapeño y chimichurri.</p>
+                <p className="dish-desc">Rib Eye de 350 g a la parrilla: jugoso, bien marmoleado y de sabor intenso.</p>
               </div>
             </Link>
 
@@ -281,9 +281,9 @@ export default async function HomePageES() {
               <div className="dish-body">
                 <div className="dish-row">
                   <h3 className="dish-name">Pulpo a la Parrilla</h3>
-                  <span className="dish-price">₡19,000</span>
+                  <span className="dish-price">₡19,500</span>
                 </div>
-                <p className="dish-desc">Tentáculo de pulpo chamuscado con puré de camote, ensalada fresca, chimichurri de tomate y concassé cítrico de soya.</p>
+                <p className="dish-desc">Pulpo tierno a la parrilla con glaseado de teriyaki, puré de camote sedoso y ensalada.</p>
               </div>
             </Link>
 
@@ -296,23 +296,23 @@ export default async function HomePageES() {
               <div className="dish-body">
                 <div className="dish-row">
                   <h3 className="dish-name">Tartar de Atún</h3>
-                  <span className="dish-price">₡9,900</span>
+                  <span className="dish-price">₡10,000</span>
                 </div>
-                <p className="dish-desc">Atún fresco marinado con salsa de soya, ajonjolí, limón, pepino y cebolla morada, servido con crostinis.</p>
+                <p className="dish-desc">Atún fresco en cubos con aguacate y pepino, en un aderezo picante de soya y sésamo. Con crostini crocantes.</p>
               </div>
             </Link>
 
             <Link href="/es/menu#white-meat" className="dish-card fade-up">
               <div className="dish-img-wrap">
-                <img src="https://assets.cdn.filesafe.space/ftiLAicHGn0i3cqS3Rye/media/69b91750269d6516ffc77360.jpg" alt="Costillas BBQ" loading="lazy" />
+                <img src="https://assets.cdn.filesafe.space/ftiLAicHGn0i3cqS3Rye/media/69b91750269d6516ffc77360.jpg" alt="Costilla BBQ" loading="lazy" />
                 <div className="dish-img-gradient"></div>
               </div>
               <div className="dish-body">
                 <div className="dish-row">
-                  <h3 className="dish-name">Costillas BBQ</h3>
+                  <h3 className="dish-name">Costilla BBQ</h3>
                   <span className="dish-price">₡12,000</span>
                 </div>
-                <p className="dish-desc">Costillas de cerdo en salsa BBQ de piña, servidas con ensalada de la casa, patacones, frijoles molidos y pico de gallo.</p>
+                <p className="dish-desc">Costilla de cerdo tierna, glaseada en nuestra salsa BBQ con piña, con frijoles molidos, patacones crocantes, pico de gallo y ensalada.</p>
               </div>
             </Link>
 
@@ -327,22 +327,22 @@ export default async function HomePageES() {
                   <h3 className="dish-name">Berenjena Parmesana</h3>
                   <span className="dish-price">₡8,500</span>
                 </div>
-                <p className="dish-desc">Berenjena crujiente con costra de parmesano en salsa pomodoro con tomates cherry, alcaparras, aceitunas y ensalada de la casa.</p>
+                <p className="dish-desc">Berenjena en salsa pomodoro con alcaparras y albahaca, gratinada con mozzarella derretida. Con ensalada fresca y crostini crocantes.</p>
               </div>
             </Link>
 
             <Link href="/es/menu#desserts" className="dish-card fade-up">
               <div className="dish-img-wrap">
-                <img src="https://assets.cdn.filesafe.space/ftiLAicHGn0i3cqS3Rye/media/69c5f94c7794bf69985031bf.jpg" alt="Brownie de Chocolate" loading="lazy" />
+                <img src="https://assets.cdn.filesafe.space/ftiLAicHGn0i3cqS3Rye/media/69c5f94c7794bf69985031bf.jpg" alt="Brownie con Helado" loading="lazy" />
                 <div className="dish-img-gradient"></div>
                 <span className="dish-badge orange">Premium</span>
               </div>
               <div className="dish-body">
                 <div className="dish-row">
-                  <h3 className="dish-name">Brownie de Chocolate</h3>
-                  <span className="dish-price">₡4,700</span>
+                  <h3 className="dish-name">Brownie con Helado</h3>
+                  <span className="dish-price">₡5,000</span>
                 </div>
-                <p className="dish-desc">Brownie de chocolate tibio servido con helado de vainilla y fresas frescas.</p>
+                <p className="dish-desc">Brownie tibio con helado de vainilla cremoso que se derrite al contacto.</p>
               </div>
             </Link>
           </div>
