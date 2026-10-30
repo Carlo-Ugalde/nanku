@@ -30,6 +30,7 @@ Toma las reservas `pending`, les asigna la mesa más eficiente, las confirma (mi
 | `outside_hours` | Fuera de 3:00–9:30 PM (`FIRST/LAST_SEATING_MIN`) |
 | `bad_time` / `bad_party` | Hora o tamaño ilegible / 0 |
 | `past` | La hora de hoy ya pasó |
+| `closed` | Día cerrado según `lib/closed-days.ts` (cierres temporales y días fijos) |
 
 Cada problema se avisa **una vez** (`reservations.auto_accept_note`). Si una mesa se libera después, la reserva se
 acepta sola en la siguiente corrida y Telegram lo indica.

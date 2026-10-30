@@ -8,10 +8,12 @@
 import { createClient } from '@supabase/supabase-js'
 import { todayCR, formatDateCR, formatTimeCR, type Reservation } from './reservations'
 import { parseTimeToMinutes, parsePartySize } from './time'
+import { isClosedDate } from './closed-days'
 import {
   assignTables,
   describeTables,
   SEATING_MINUTES,
+  type AssignResult,
   type Assignment,
   type Booking,
   type Rejection,
@@ -110,9 +112,13 @@ export async function runAutoAccept(
       const startMin = parseTimeToMinutes(p.time)
       const party = parsePartySize(p.party_size)
 
-      const res = date === today && startMin !== null && startMin < nowCRMinutes()
-        ? { ok: false as const, rejection: { code: 'past' as const, message: 'La hora de la reserva ya pasó.' } }
-        : assignTables(party, startMin, bookings)
+      // lib/closed-days.ts is the single source of truth for closures (the web form already blocks them,
+      // but WhatsApp / admin rows can still land on a closed day).
+      const res: AssignResult = isClosedDate(date)
+        ? { ok: false, rejection: { code: 'closed', message: 'El restaurante está cerrado ese día.' } }
+        : date === today && startMin !== null && startMin < nowCRMinutes()
+          ? { ok: false, rejection: { code: 'past', message: 'La hora de la reserva ya pasó.' } }
+          : assignTables(party, startMin, bookings)
 
       if (!res.ok) {
         const announced = p.auto_accept_note === res.rejection.code

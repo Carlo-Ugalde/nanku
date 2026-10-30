@@ -30,7 +30,7 @@ export type Assignment = {
   remark?: string
 }
 
-export type RejectionCode = 'bad_time' | 'bad_party' | 'outside_hours' | 'too_large' | 'full' | 'past'
+export type RejectionCode = 'bad_time' | 'bad_party' | 'outside_hours' | 'too_large' | 'full' | 'past' | 'closed'
 
 export type Rejection = { code: RejectionCode; message: string }
 

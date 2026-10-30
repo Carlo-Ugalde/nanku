@@ -1,6 +1,7 @@
 import { test, beforeEach } from 'node:test'
 import assert from 'node:assert/strict'
 import { runAutoAccept } from './auto-accept'
+import { CLOSED_WEEKDAYS } from './closed-days'
 
 // ── Tiny in-memory stand-in for the supabase-js calls auto-accept makes ───────
 type Row = Record<string, any>
@@ -205,4 +206,21 @@ test('a failing Telegram or webhook never blocks acceptance', async () => {
   const out = await runAutoAccept({ db })
   assert.equal(out.accepted, 1)
   assert.equal(rows[0].status, 'confirmed')
+})
+
+test('closed days (lib/closed-days.ts) are never auto-accepted, and the owner is told once', async () => {
+  const weekday = new Date(Date.UTC(2030, 5, 15)).getUTCDay() // DAY = 2030-06-15
+  CLOSED_WEEKDAYS.push(weekday)
+  try {
+    const { db, rows } = fakeDb([pending()])
+    const out = await runAutoAccept({ db })
+    assert.equal(out.conflicts, 1)
+    assert.equal(rows[0].status, 'pending')
+    assert.equal(rows[0].auto_accept_note, 'closed')
+    assert.equal(sent.length, 1)
+    assert.match(sent[0], /cerrado/)
+    assert.equal(hooks.length, 0)
+  } finally {
+    CLOSED_WEEKDAYS.splice(CLOSED_WEEKDAYS.indexOf(weekday), 1)
+  }
 })
