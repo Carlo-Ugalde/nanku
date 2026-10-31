@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import type { Reservation } from '@/lib/reservations'
 import { formatDateCR } from '@/lib/reservations'
 import { SALON_TABLES, TERRAZA_TABLES } from '@/lib/tables'
+import { sameSlot } from '@/lib/time'
 
 const ALL = [...SALON_TABLES, ...TERRAZA_TABLES]
 
@@ -36,7 +37,7 @@ export default function ConfirmTableModal({ reservation, onCancel, onConfirmed }
         if (cancelled) return
         const taken = new Set<string>()
         for (const r of json.reservations ?? []) {
-          if (r.id !== reservation.id && r.time === reservation.time) {
+          if (r.id !== reservation.id && sameSlot(r.time, reservation.time)) {
             for (const tid of r.table_ids ?? []) taken.add(tid)
           }
         }

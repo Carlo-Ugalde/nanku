@@ -21,6 +21,7 @@ import {
   LUNCH_SLOTS,
   DINNER_SLOTS,
 } from '@/lib/tables'
+import { to24h } from '@/lib/time'
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 const ARRIVAL_WINDOW_MS = 20 * 60 * 1000
@@ -28,7 +29,7 @@ const ARRIVAL_WINDOW_MS = 20 * 60 * 1000
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 function crToMs(dateStr: string, timeStr: string): number {
   const [y, mo, d] = dateStr.split('-').map(Number)
-  const [h, mi]    = timeStr.split(':').map(Number)
+  const [h, mi]    = to24h(timeStr).split(':').map(Number)
   return Date.UTC(y, mo - 1, d, h + 6, mi)
 }
 
@@ -191,7 +192,7 @@ export default function TableMapClient({ userEmail }: { userEmail: string }) {
     const c: Record<string, number> = {}
     allRes
       .filter(r => r.status === 'confirmed' || r.status === 'pending')
-      .forEach(r => { c[r.time] = (c[r.time] ?? 0) + 1 })
+      .forEach(r => { const k = to24h(r.time); c[k] = (c[k] ?? 0) + 1 })
     return c
   }, [allRes])
 
@@ -199,7 +200,7 @@ export default function TableMapClient({ userEmail }: { userEmail: string }) {
     const tMap: Record<string, Reservation> = {}
     const pMap: Record<string, Reservation> = {}
     allRes
-      .filter(r => r.time === selectedSlot && (r.status === 'confirmed' || r.status === 'pending'))
+      .filter(r => to24h(r.time) === selectedSlot && (r.status === 'confirmed' || r.status === 'pending'))
       .forEach(r => {
         ;(r.table_ids ?? []).forEach(tid => {
           if (r.status === 'confirmed') tMap[tid] = r

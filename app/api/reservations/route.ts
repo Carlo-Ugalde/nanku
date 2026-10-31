@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@supabase/supabase-js'
 import { isClosedDate } from '@/lib/closed-days'
+import { runAutoAccept, isAutoAcceptEnabled } from '@/lib/auto-accept'
 
 export async function POST(request: NextRequest) {
   try {
@@ -81,7 +82,21 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Failed to save reservation. Please try again.' }, { status: 500 })
     }
 
-    // Webhook is fired later by the admin when the reservation is confirmed + table assigned
+    // Auto-accept right away (picks tables, fires the confirmation webhook, alerts Telegram).
+    // Never let it fail or slow down the customer's booking: on any problem the row simply
+    // stays `pending` and the scheduled sweep / the admin picks it up.
+    if (isAutoAcceptEnabled()) {
+      try {
+        await Promise.race([
+          runAutoAccept(),
+          new Promise((_, reject) => setTimeout(() => reject(new Error('auto-accept timeout')), 8000)),
+        ])
+      } catch (e) {
+        console.error('Auto-accept after insert failed:', e)
+      }
+    }
+
+    // Otherwise the admin fires the webhook later, when confirming + assigning a table
     return NextResponse.json({ success: true }, { status: 201 })
   } catch (err) {
     console.error('Reservation API error:', err)

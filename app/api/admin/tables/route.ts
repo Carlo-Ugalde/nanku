@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
+import { sameSlot } from '@/lib/time'
 
 // GET /api/admin/tables?date=YYYY-MM-DD&time=HH:MM
 // Returns array of table_ids that are confirmed for that slot
@@ -19,9 +20,8 @@ export async function GET(req: NextRequest) {
 
   let query = supabase
     .from('reservations')
-    .select('table_ids')
+    .select('table_ids, time')
     .eq('date', date)
-    .eq('time', time)
     .eq('status', 'confirmed')
 
   if (excludeId) query = query.neq('id', excludeId)
@@ -29,6 +29,9 @@ export async function GET(req: NextRequest) {
   const { data, error } = await query
   if (error) return NextResponse.json({ error: error.message }, { status: 500 })
 
-  const occupied = (data ?? []).flatMap(r => r.table_ids ?? [])
+  // `time` is free text ("7:00 PM" from the web form, "19:00" from admin/bot) — compare by minute.
+  const occupied = (data ?? [])
+    .filter(r => sameSlot(r.time, time))
+    .flatMap(r => r.table_ids ?? [])
   return NextResponse.json({ occupied })
 }
