@@ -367,12 +367,12 @@ export default async function HomePageES() {
           <div className="cocktails-grid">
             <div className="cocktail-card fade-up">
               <div className="cocktail-img-wrap">
-                <img src="https://assets.cdn.filesafe.space/ftiLAicHGn0i3cqS3Rye/media/69c734203204cc754642fc04.jpg" alt="Margaritas Artesanales" loading="lazy" />
+                <img src="https://assets.cdn.filesafe.space/ftiLAicHGn0i3cqS3Rye/media/69c734203204cc754642fc04.jpg" alt="Margaritas" loading="lazy" />
                 <div className="cocktail-img-gradient"></div>
-                <div className="cocktail-img-title"><h3>Margaritas Artesanales</h3></div>
+                <div className="cocktail-img-title"><h3>Margaritas</h3></div>
               </div>
               <div className="cocktail-body">
-                <p>Versiones elevadas del clásico, con mezcal y tequila premium, frutas tropicales locales y jarabes de la casa.</p>
+                <p>Tequila, triple sec y limón. Prueba la clásica, la de maracuyá con jalapeño o la de mango frozen.</p>
                 <ul className="cocktail-drinks">
                   <li className="cocktail-drink"><span className="cocktail-drink-dot"></span>Margarita Clásica</li>
                   <li className="cocktail-drink"><span className="cocktail-drink-dot"></span>Wild Passion Margarita</li>
@@ -384,12 +384,12 @@ export default async function HomePageES() {
             <div className="cocktail-highlight-wrap fade-up">
               <div className="cocktail-card">
                 <div className="cocktail-img-wrap">
-                  <img src="https://assets.cdn.filesafe.space/ftiLAicHGn0i3cqS3Rye/media/69c7341f899abb6360f61a32.jpg" alt="Paraíso Tiki" loading="lazy" />
+                  <img src="https://assets.cdn.filesafe.space/ftiLAicHGn0i3cqS3Rye/media/69c7341f899abb6360f61a32.jpg" alt="Cócteles Tiki" loading="lazy" />
                   <div className="cocktail-img-gradient"></div>
-                  <div className="cocktail-img-title"><h3>Paraíso Tiki</h3></div>
+                  <div className="cocktail-img-title"><h3>Cócteles Tiki</h3></div>
                 </div>
                 <div className="cocktail-body">
-                  <p>Transportate al trópico con creaciones a base de ron, capas de coco, maracuyá y piña fresca.</p>
+                  <p>Tragos a base de ron con piña, mango, sandía y jengibre, servidos en vasos tiki.</p>
                   <ul className="cocktail-drinks">
                     <li className="cocktail-drink"><span className="cocktail-drink-dot"></span>Pura Vida</li>
                     <li className="cocktail-drink"><span className="cocktail-drink-dot"></span>Julia</li>
@@ -406,7 +406,7 @@ export default async function HomePageES() {
                 <div className="cocktail-img-title"><h3>Los Clásicos</h3></div>
               </div>
               <div className="cocktail-body">
-                <p>Cócteles atemporales preparados con precisión — los compañeros perfectos para una velada relajada bajo el cielo de la selva.</p>
+                <p>Los de siempre, bien preparados.</p>
                 <ul className="cocktail-drinks">
                   <li className="cocktail-drink"><span className="cocktail-drink-dot"></span>Mojito</li>
                   <li className="cocktail-drink"><span className="cocktail-drink-dot"></span>Piña Colada</li>

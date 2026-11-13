@@ -332,22 +332,22 @@ export default async function HomePage() {
             {[
               {
                 img: 'https://assets.cdn.filesafe.space/ftiLAicHGn0i3cqS3Rye/media/69c734203204cc754642fc04.jpg',
-                title: 'Craft Margaritas',
-                desc: 'Elevated twists on the classic, using premium mezcal and tequila with locally sourced tropical fruits and house-made syrups.',
+                title: 'Margaritas',
+                desc: 'Tequila, triple sec and lime. Try the classic, the jalapeño passion fruit or the frozen mango.',
                 drinks: ['Margarita Clásica', 'Wild Passion Margarita', 'Margarita de Mango'],
                 highlight: false,
               },
               {
                 img: 'https://assets.cdn.filesafe.space/ftiLAicHGn0i3cqS3Rye/media/69c7341f899abb6360f61a32.jpg',
-                title: 'Tiki Paradise',
-                desc: 'Transport yourself to the tropics with rum-forward concoctions layered with coconut, passion fruit, and fresh pineapple.',
+                title: 'Tiki Cocktails',
+                desc: 'Rum-based drinks with pineapple, mango, watermelon and ginger, served in tiki mugs.',
                 drinks: ['Pura Vida', 'Julia', 'A Cachete'],
                 highlight: true,
               },
               {
                 img: 'https://assets.cdn.filesafe.space/ftiLAicHGn0i3cqS3Rye/media/69c734202e89d8e97f5f1526.jpg',
                 title: 'The Classics',
-                desc: 'Timeless cocktails crafted with precision — the perfect companions for a relaxed evening under the jungle sky.',
+                desc: 'The usual favorites, well made.',
                 drinks: ['Mojito', 'Piña Colada', 'Old Fashioned', 'Negroni'],
                 highlight: false,
               },

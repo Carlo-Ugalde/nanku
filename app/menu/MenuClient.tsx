@@ -605,22 +605,22 @@ export default function MenuClient({ lang = 'en' }: { lang?: 'en' | 'es' }) {
               : 'Escape to the tropics with our vibrant tiki creations — bold, exotic blends perfectly balanced to transport you to flavor paradise.'} />
             {(() => {
               const tikisEn: FoodItem[] = [
-                { name: 'Pura Vida', price: '₡8,000', desc: 'The spirit of Costa Rica in a glass. White rum and vodka meet gin and pineapple juice, while lime and starfruit add irresistible tropical freshness.', photo: CDN + '69ee79140d66f2a6656398cc.png' },
-                { name: 'Nanku', price: '₡8,000', desc: 'Our signature tiki. Dark and white rum united in perfect harmony with lime, cinnamon syrup, and the sweet kiss of mango.', photo: CDN + '69ee744905d4199001c71026.png' },
-                { name: 'Julia', price: '₡8,000', desc: 'Caribbean elegance. Aged rum and pineapple dance with ginger syrup and lime, crowned with the aromatic touch of cranberry juice.', photo: CDN + '69ee777f717d5dd4e12d8ee5.png' },
-                { name: 'A Cachete', price: '₡8,000', desc: 'Pure tropical power. Aged rum and watermelon juice lead this exotic escape, elevated with lime, pineapple, cinnamon, Malibu, and mysterious blue curaçao.', photo: CDN + '69ee77ea05d4199001c7c357.png' },
-                { name: 'Tuanis', price: '₡8,000', desc: 'Simply "tuanis" (awesome). The refreshing combination of white and dark rum, lime and Jamaica syrup, with the vibrant touch of ginger.', photo: CDN + '69ee76d2b0e5e2bb7ff40bd3.png' },
-                { name: 'Jack Sparrow', price: '₡8,000', desc: 'Adventure in every sip. Campari and Jack Daniel\'s meet passion fruit and ginger syrup, sailing on a sea of orange juice.', photo: CDN + '69ee78aa05d4199001c7e731.png' },
-                { name: 'Mai Tai', price: '₡8,000', desc: 'The timeless classic. Rum, Cointreau, lime, and sugar, crowned with exotic horchata syrup.', photo: CDN + '69ee762e0d66f2a665630ced.png' },
+                { name: 'Pura Vida', price: '₡8,000', desc: 'White rum, vodka, gin, pineapple juice, honey, lime and starfruit.', photo: CDN + '69ee79140d66f2a6656398cc.png' },
+                { name: 'Nanku', price: '₡8,000', desc: 'Dark rum, white rum, lime, cinnamon syrup and mango.', photo: CDN + '69ee744905d4199001c71026.png' },
+                { name: 'Julia', price: '₡8,000', desc: 'Aged rum, pineapple, ginger syrup, lime and cranberry juice.', photo: CDN + '69ee777f717d5dd4e12d8ee5.png' },
+                { name: 'A Cachete', price: '₡8,000', desc: 'Aged rum, watermelon and pineapple juice, cinnamon syrup, Malibu and blue curaçao.', photo: CDN + '69ee77ea05d4199001c7c357.png' },
+                { name: 'Tuanis', price: '₡8,000', desc: 'White rum, dark rum, lime, hibiscus syrup and ginger.', photo: CDN + '69ee76d2b0e5e2bb7ff40bd3.png' },
+                { name: 'Jack Sparrow', price: '₡8,000', desc: 'Campari, Jack Daniel\'s, passion fruit, ginger syrup and orange juice.', photo: CDN + '69ee78aa05d4199001c7e731.png' },
+                { name: 'Mai Tai', price: '₡8,000', desc: 'Rum, Cointreau, lime, sugar and horchata syrup.', photo: CDN + '69ee762e0d66f2a665630ced.png' },
               ]
               const tikisEs: FoodItem[] = [
-                { name: 'Pura Vida', price: '₡8,000', desc: 'El espíritu de Costa Rica en un vaso. Ron blanco y vodka se encuentran con ginebra y jugo de piña, mientras que el limón y el carambolo añaden una frescura tropical irresistible.', photo: CDN + '69ee79140d66f2a6656398cc.png' },
-                { name: 'Nanku', price: '₡8,000', desc: 'Nuestro tiki insignia. Ron oscuro y blanco unidos en perfecta armonía con limón, jarabe de canela y el dulce beso del mango.', photo: CDN + '69ee744905d4199001c71026.png' },
-                { name: 'Julia', price: '₡8,000', desc: 'Elegancia caribeña. Ron añejo y piña bailan con jarabe de jengibre y limón, coronados con el toque aromático del jugo de arándano.', photo: CDN + '69ee777f717d5dd4e12d8ee5.png' },
-                { name: 'A Cachete', price: '₡8,000', desc: 'Puro poder tropical. Ron añejo y jugo de sandía lideran esta escapada exótica, elevada con limón, piña, canela, Malibu y el misterioso curaçao azul.', photo: CDN + '69ee77ea05d4199001c7c357.png' },
-                { name: 'Tuanis', price: '₡8,000', desc: 'Simplemente "tuanis" (genial). La refrescante combinación de ron blanco y oscuro, limón y jarabe de Jamaica, con el toque vibrante del jengibre.', photo: CDN + '69ee76d2b0e5e2bb7ff40bd3.png' },
-                { name: 'Jack Sparrow', price: '₡8,000', desc: 'Aventura en cada sorbo. Campari y Jack Daniel\'s se encuentran con maracuyá y jarabe de jengibre, navegando en un mar de jugo de naranja.', photo: CDN + '69ee78aa05d4199001c7e731.png' },
-                { name: 'Mai Tai', price: '₡8,000', desc: 'El clásico atemporal. Ron, Cointreau, limón y azúcar, coronado con el exótico jarabe de horchata.', photo: CDN + '69ee762e0d66f2a665630ced.png' },
+                { name: 'Pura Vida', price: '₡8,000', desc: 'Ron blanco, vodka, ginebra, jugo de piña, miel, limón y carambolo.', photo: CDN + '69ee79140d66f2a6656398cc.png' },
+                { name: 'Nanku', price: '₡8,000', desc: 'Ron oscuro, ron blanco, limón, jarabe de canela y mango.', photo: CDN + '69ee744905d4199001c71026.png' },
+                { name: 'Julia', price: '₡8,000', desc: 'Ron añejo, piña, jarabe de jengibre, limón y jugo de arándano.', photo: CDN + '69ee777f717d5dd4e12d8ee5.png' },
+                { name: 'A Cachete', price: '₡8,000', desc: 'Ron añejo, jugo de sandía y de piña, jarabe de canela, Malibu y curaçao azul.', photo: CDN + '69ee77ea05d4199001c7c357.png' },
+                { name: 'Tuanis', price: '₡8,000', desc: 'Ron blanco, ron oscuro, limón, jarabe de jamaica y jengibre.', photo: CDN + '69ee76d2b0e5e2bb7ff40bd3.png' },
+                { name: 'Jack Sparrow', price: '₡8,000', desc: 'Campari, Jack Daniel\'s, maracuyá, jarabe de jengibre y jugo de naranja.', photo: CDN + '69ee78aa05d4199001c7e731.png' },
+                { name: 'Mai Tai', price: '₡8,000', desc: 'Ron, Cointreau, limón, azúcar y jarabe de horchata.', photo: CDN + '69ee762e0d66f2a665630ced.png' },
               ]
               const tikis = lang === 'es' ? tikisEs : tikisEn
               return (
