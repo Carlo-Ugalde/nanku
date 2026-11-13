@@ -27,7 +27,7 @@ Toma las reservas `pending`, les asigna la mesa más eficiente, las confirma (mi
 |---|---|
 | `full` | No hay mesa/combinación libre en esa franja |
 | `too_large` | Grupo mayor a la capacidad automática del salón (60) |
-| `outside_hours` | Fuera de 3:00–9:30 PM (`FIRST/LAST_SEATING_MIN`) |
+| `outside_hours` | Fuera de 12:00 PM–9:30 PM (`FIRST/LAST_SEATING_MIN`) |
 | `bad_time` / `bad_party` | Hora o tamaño ilegible / 0 |
 | `past` | La hora de hoy ya pasó |
 | `closed` | Día cerrado según `lib/closed-days.ts` (cierres temporales y días fijos) |

@@ -147,7 +147,7 @@ test('confirmed booking with no tables still holds a seat so it is not double-so
 })
 
 test('bookings outside service hours go to a human', async () => {
-  const { db, rows } = fakeDb([pending({ time: '12:00 PM' })])
+  const { db, rows } = fakeDb([pending({ time: '11:00 AM' })])
   const out = await runAutoAccept({ db })
   assert.equal(out.conflicts, 1)
   assert.equal(rows[0].status, 'pending')

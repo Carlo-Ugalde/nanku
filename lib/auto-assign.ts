@@ -11,8 +11,8 @@ import {
 
 /** How long a party holds a table. Two bookings conflict if their starts are closer than this. */
 export const SEATING_MINUTES = 120
-/** Auto-accept only inside service hours; anything else goes to a human. Mirrors the WhatsApp bot (15:00–21:30). */
-export const FIRST_SEATING_MIN = 15 * 60
+/** Auto-accept only inside service hours; anything else goes to a human. Open 12:00–22:00 daily; kitchen closes 21:30. */
+export const FIRST_SEATING_MIN = 12 * 60
 export const LAST_SEATING_MIN = 21 * 60 + 30
 
 export type Zone = 'salon' | 'terraza'
@@ -100,7 +100,7 @@ export function assignTables(
   if (startMin === null) return reject('bad_time', 'Hora ilegible, no se puede asignar mesa.')
   if (partySize === null) return reject('bad_party', 'Tamaño del grupo ilegible o 0.')
   if (startMin < FIRST_SEATING_MIN || startMin > LAST_SEATING_MIN) {
-    return reject('outside_hours', 'Hora fuera del horario de servicio (3:00 PM – 9:30 PM), revisar a mano.')
+    return reject('outside_hours', 'Hora fuera del horario de servicio (12:00 PM – 9:30 PM), revisar a mano.')
   }
   if (partySize > MAX_AUTO_CAPACITY) {
     return reject('too_large', `Grupo de ${partySize} pax excede la capacidad automática del salón (${MAX_AUTO_CAPACITY}).`)
