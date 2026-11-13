@@ -275,15 +275,15 @@ export default async function HomePageES() {
 
             <Link href="/es/menu#seafood" className="dish-card fade-up">
               <div className="dish-img-wrap">
-                <img src="https://assets.cdn.filesafe.space/ftiLAicHGn0i3cqS3Rye/media/69b9175087f0f2768356c731.jpg" alt="Pulpo a la Parrilla" loading="lazy" />
+                <img src="/dishes/salmon-special.jpg" alt="Especial de Salmón" loading="lazy" />
                 <div className="dish-img-gradient"></div>
               </div>
               <div className="dish-body">
                 <div className="dish-row">
-                  <h3 className="dish-name">Pulpo a la Parrilla</h3>
-                  <span className="dish-price">₡19,500</span>
+                  <h3 className="dish-name">Especial de Salmón</h3>
+                  <span className="dish-price">₡22,500</span>
                 </div>
-                <p className="dish-desc">Pulpo tierno a la parrilla con glaseado de teriyaki, puré de camote sedoso y ensalada.</p>
+                <p className="dish-desc">Salmón y camarones jumbo en leche de coco con una salsa agridulce de fresa, con arroz y vegetales mixtos.</p>
               </div>
             </Link>
 
@@ -302,17 +302,17 @@ export default async function HomePageES() {
               </div>
             </Link>
 
-            <Link href="/es/menu#white-meat" className="dish-card fade-up">
+            <Link href="/es/menu#seafood" className="dish-card fade-up">
               <div className="dish-img-wrap">
-                <img src="https://assets.cdn.filesafe.space/ftiLAicHGn0i3cqS3Rye/media/69b91750269d6516ffc77360.jpg" alt="Costilla BBQ" loading="lazy" />
+                <img src="/dishes/malibu-shrimp-special.jpg" alt="Especial Camarones Malibu" loading="lazy" />
                 <div className="dish-img-gradient"></div>
               </div>
               <div className="dish-body">
                 <div className="dish-row">
-                  <h3 className="dish-name">Costilla BBQ</h3>
-                  <span className="dish-price">₡12,000</span>
+                  <h3 className="dish-name">Especial Camarones Malibu</h3>
+                  <span className="dish-price">₡21,500</span>
                 </div>
-                <p className="dish-desc">Costilla de cerdo tierna, glaseada en nuestra salsa BBQ con piña, con frijoles molidos, patacones crocantes, pico de gallo y ensalada.</p>
+                <p className="dish-desc">Camarones jumbo en nuestra cremosa salsa Malibu de coco y ron, con arroz con piña y ensalada.</p>
               </div>
             </Link>
 
