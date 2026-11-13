@@ -384,7 +384,7 @@ export default async function HomePageES() {
             <div className="cocktail-highlight-wrap fade-up">
               <div className="cocktail-card">
                 <div className="cocktail-img-wrap">
-                  <img src="https://assets.cdn.filesafe.space/ftiLAicHGn0i3cqS3Rye/media/69c7341f899abb6360f61a32.jpg" alt="Cócteles Tiki" loading="lazy" />
+                  <img src="/cocktails/tiki-nanku.jpg" alt="Cócteles Tiki" loading="lazy" />
                   <div className="cocktail-img-gradient"></div>
                   <div className="cocktail-img-title"><h3>Cócteles Tiki</h3></div>
                 </div>

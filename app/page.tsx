@@ -338,7 +338,7 @@ export default async function HomePage() {
                 highlight: false,
               },
               {
-                img: 'https://assets.cdn.filesafe.space/ftiLAicHGn0i3cqS3Rye/media/69c7341f899abb6360f61a32.jpg',
+                img: '/cocktails/tiki-nanku.jpg',
                 title: 'Tiki Cocktails',
                 desc: 'Rum-based drinks with pineapple, mango, watermelon and ginger, served in tiki mugs.',
                 drinks: ['Pura Vida', 'Julia', 'A Cachete'],
