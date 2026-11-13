@@ -45,8 +45,8 @@ const enFood = {
     { name: 'Caribbean Seafood Soup', price: '₡8,000', desc: 'Creamy seafood soup in coconut broth with a gentle kick of panameño chili. With rice.', photo: CDN + '69c5f6dc7794bf5d9b4fe34b.jpg' },
   ] as FoodItem[],
   seafood: [
-    { name: 'Salmon Special', price: '₡22,500', desc: 'Salmon and jumbo shrimp in coconut milk with a sweet-and-tangy strawberry sauce, with rice and mixed vegetables.' },
-    { name: 'Malibu Shrimp Special', price: '₡21,500', desc: 'Jumbo shrimp in our creamy Malibu coconut-rum sauce, with pineapple rice and salad.' },
+    { name: 'Salmon Special', price: '₡22,500', desc: 'Salmon and jumbo shrimp in coconut milk with a sweet-and-tangy strawberry sauce, with rice and mixed vegetables.', photo: '/dishes/salmon-special.jpg' },
+    { name: 'Malibu Shrimp Special', price: '₡21,500', desc: 'Jumbo shrimp in our creamy Malibu coconut-rum sauce, with pineapple rice and salad.', photo: '/dishes/malibu-shrimp-special.jpg' },
     { name: 'Grilled Octopus', price: '₡19,500', desc: 'Tender grilled octopus in teriyaki glaze with silky sweet potato purée and salad.', photo: CDN + '69b9175087f0f2768356c731.jpg' },
     { name: 'Catch of the Day with Passion Fruit Sauce', price: '₡15,000', desc: 'With sweet-and-tangy passion fruit sauce, silky sweet potato purée and mixed vegetables.' },
     { name: 'Teriyaki Tuna', price: '₡14,500', desc: 'Sesame-seared premium tuna in teriyaki glaze, with creamy mashed potato and mixed vegetables.', photo: CDN + '69d85b05d7871cddf7ea19e0.webp' },
@@ -126,8 +126,8 @@ const esFood = {
     { name: 'Sopa Caribeña', price: '₡8,000', desc: 'Sopa cremosa de mariscos en caldo de coco, con un toque picante de chile panameño. Con arroz.', photo: CDN + '69c5f6dc7794bf5d9b4fe34b.jpg' },
   ] as FoodItem[],
   seafood: [
-    { name: 'Especial de Salmón', price: '₡22,500', desc: 'Salmón y camarones jumbo en leche de coco con una salsa agridulce de fresa, con arroz y vegetales mixtos.' },
-    { name: 'Especial Camarones Malibu', price: '₡21,500', desc: 'Camarones jumbo en nuestra cremosa salsa Malibu de coco y ron, con arroz con piña y ensalada.' },
+    { name: 'Especial de Salmón', price: '₡22,500', desc: 'Salmón y camarones jumbo en leche de coco con una salsa agridulce de fresa, con arroz y vegetales mixtos.', photo: '/dishes/salmon-special.jpg' },
+    { name: 'Especial Camarones Malibu', price: '₡21,500', desc: 'Camarones jumbo en nuestra cremosa salsa Malibu de coco y ron, con arroz con piña y ensalada.', photo: '/dishes/malibu-shrimp-special.jpg' },
     { name: 'Pulpo a la Parrilla', price: '₡19,500', desc: 'Pulpo tierno a la parrilla con glaseado de teriyaki, puré de camote sedoso y ensalada.', photo: CDN + '69b9175087f0f2768356c731.jpg' },
     { name: 'Pesca del Día con Salsa de Maracuyá', price: '₡15,000', desc: 'Servido con salsa agridulce de maracuyá, puré de camote sedoso y vegetales mixtos.' },
     { name: 'Atún Teriyaki', price: '₡14,500', desc: 'Atún premium sellado con ajonjolí y glaseado de teriyaki, con puré de papa cremoso y vegetales mixtos.', photo: CDN + '69d85b05d7871cddf7ea19e0.webp' },
