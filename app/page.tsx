@@ -201,10 +201,6 @@ export default async function HomePage() {
                   <h3 className="exp-title">Signature Cocktails</h3>
                   <div className="exp-bar" style={{ background: 'linear-gradient(to right,#F5A623,transparent)' }}></div>
                   <p className="exp-desc">Handcrafted tropical cocktails blending local spirits with fresh exotic fruits, aromatic herbs, and a touch of Costa Rican magic.</p>
-                  <Link href="/menu?tab=drinks" className="exp-cta">
-                    <span style={{ color: '#F5A623' }}>Discover more</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" stroke="#F5A623" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg>
-                  </Link>
                 </div>
               </div>
             </div>
@@ -375,9 +371,6 @@ export default async function HomePage() {
                 ? <div key={c.title} className="cocktail-highlight-wrap fade-up">{card}</div>
                 : card
             })}
-          </div>
-          <div className="cocktails-cta fade-up">
-            <Link href="/menu?tab=drinks" className="btn-outline-orange">See Drinks Menu →</Link>
           </div>
         </div>
       </section>

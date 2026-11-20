@@ -172,10 +172,6 @@ export default async function HomePageES() {
                   <h3 className="exp-title">Cócteles de la Casa</h3>
                   <div className="exp-bar" style={{ background: 'linear-gradient(to right,#F5A623,transparent)' }}></div>
                   <p className="exp-desc">Cócteles tropicales artesanales que mezclan destilados locales con frutas exóticas frescas, hierbas aromáticas y un toque de magia costarricense.</p>
-                  <Link href="/es/menu" className="exp-cta">
-                    <span style={{ color: '#F5A623' }}>Descubrí más</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" stroke="#F5A623" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg>
-                  </Link>
                 </div>
               </div>
             </div>
@@ -417,9 +413,6 @@ export default async function HomePageES() {
             </div>
           </div>
 
-          <div className="cocktails-cta fade-up">
-            <a href="/es/menu" className="btn-outline-orange">Ver Menú de Bebidas →</a>
-          </div>
         </div>
       </section>
 

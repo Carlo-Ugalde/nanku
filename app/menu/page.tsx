@@ -6,9 +6,9 @@ import WhatsAppButton from '@/components/WhatsAppButton'
 import MenuClient from './MenuClient'
 
 export const metadata: Metadata = {
-  title: 'Menu — Steaks, Seafood & Cocktails',
+  title: 'Menu — Steaks & Seafood',
   description:
-    'Explore the full menu at Nanku Tropical Bar & Steakhouse — farm-to-table cuisine, premium cocktails, seafood and more in La Fortuna, Costa Rica.',
+    'Explore the full menu at Nanku Tropical Bar & Steakhouse — farm-to-table cuisine, premium steaks, seafood and more in La Fortuna, Costa Rica.',
   alternates: {
     canonical: 'https://www.restaurantenanku.net/menu',
     languages: {
@@ -60,8 +60,7 @@ const menuJsonLd = {
   ],
 }
 
-export default function MenuPage({ searchParams }: { searchParams: { tab?: string } }) {
-  const isDrinks = searchParams?.tab === 'drinks'
+export default function MenuPage() {
   return (
     <>
       <script
@@ -75,7 +74,7 @@ export default function MenuPage({ searchParams }: { searchParams: { tab?: strin
         <div className="menu-hero-glow"></div>
         <div className="menu-hero-inner">
           <span className="section-label">Nanku</span>
-          <h1 className="menu-hero-title">{isDrinks ? 'Our Drinks Menu' : 'Our Menu'}</h1>
+          <h1 className="menu-hero-title">Our Menu</h1>
           <div className="divider-line" style={{ margin: '0 auto 1.25rem' }}></div>
           <p className="menu-hero-sub">Farm-to-table freshness, locally sourced ingredients, all prices include taxes.</p>
         </div>

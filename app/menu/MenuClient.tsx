@@ -1,13 +1,10 @@
 'use client'
 
-import { useState, useEffect } from 'react'
-import { useSearchParams } from 'next/navigation'
+import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
-type Panel = 'food' | 'drinks'
 type FoodCat = 'appetizers' | 'seafood' | 'pasta' | 'white-meat' | 'steaks' | 'vegetarian' | 'costa-rica' | 'desserts'
-type DrinksCat = 'licores' | 'bebidas' | 'cervezas' | 'tiki' | 'cocteles' | 'vinos'
 
 const CDN = 'https://assets.cdn.filesafe.space/ftiLAicHGn0i3cqS3Rye/media/'
 
@@ -109,8 +106,6 @@ const enFood = {
     { id: 'costa-rica' as FoodCat, label: 'Costa Rica' },
     { id: 'desserts' as FoodCat, label: 'Desserts' },
   ],
-  panelFood: 'Food Menu',
-  panelDrinks: 'Drinks Menu',
 }
 
 // ─── ES DATA ────────────────────────────────────────────────────────────────
@@ -190,18 +185,7 @@ const esFood = {
     { id: 'costa-rica' as FoodCat, label: 'Costa Rica' },
     { id: 'desserts' as FoodCat, label: 'Postres' },
   ],
-  panelFood: 'Comida',
-  panelDrinks: 'Bebidas',
 }
-
-const drinksCats: { id: DrinksCat; label: string }[] = [
-  { id: 'tiki', label: 'Tiki Cocktails' },
-  { id: 'cocteles', label: 'Cocktails' },
-  { id: 'vinos', label: 'Wines' },
-  { id: 'licores', label: 'Licores' },
-  { id: 'cervezas', label: 'Beer' },
-  { id: 'bebidas', label: 'Soft Drinks' },
-]
 
 // ─── SUB-COMPONENTS ──────────────────────────────────────────────────────────
 
@@ -246,29 +230,6 @@ function PriceRow({ item, onOpen }: { item: FoodItem; onOpen?: (item: FoodItem) 
   )
 }
 
-function DPriceRow({ name, price }: { name: string; price: string }) {
-  return (
-    <div className="nm-dprice-row">
-      <span className="nm-dprice-name">{name}</span>
-      <span className="nm-dprice-dots"></span>
-      <span className="nm-dprice-val">{price}</span>
-    </div>
-  )
-}
-
-function WineRow({ name, detail, price }: { name: string; detail: string; price: string }) {
-  return (
-    <div className="nm-wine-row">
-      <div className="nm-wine-info">
-        <span className="nm-wine-name">{name}</span>
-        <span className="nm-wine-detail">{detail}</span>
-      </div>
-      <span className="nm-wine-dots"></span>
-      <span className="nm-wine-price">{price}</span>
-    </div>
-  )
-}
-
 function SectionBanner({ src, title, tall }: { src: string; title: string; tall?: boolean }) {
   return (
     <div className={`nm-banner${tall ? ' nm-banner-tall' : ''}`}>
@@ -280,41 +241,11 @@ function SectionBanner({ src, title, tall }: { src: string; title: string; tall?
   )
 }
 
-function DrinksHeader({ title, subtitle }: { title: string; subtitle?: string }) {
-  return (
-    <div className="nm-drinks-header">
-      <span className="nm-drinks-ornament">✦ &nbsp; ✦ &nbsp; ✦</span>
-      <h2 className="nm-drinks-title">{title}</h2>
-      <div className="nm-drinks-divider">
-        <span className="nm-ddiv-line"></span>
-        <span className="nm-ddiv-gem">◆</span>
-        <span className="nm-ddiv-line"></span>
-      </div>
-      {subtitle && <p className="nm-drinks-subtitle">{subtitle}</p>}
-    </div>
-  )
-}
-
-function DSub({ title, children }: { title: string; children: React.ReactNode }) {
-  return (
-    <div className="nm-dsub">
-      <div className="nm-dsub-title">{title}</div>
-      <div className="nm-dprice-grid">{children}</div>
-    </div>
-  )
-}
-
 // ─── MAIN COMPONENT ──────────────────────────────────────────────────────────
 
 export default function MenuClient({ lang = 'en' }: { lang?: 'en' | 'es' }) {
-  const [panel, setPanel] = useState<Panel>('food')
   const [foodCat, setFoodCat] = useState<FoodCat>('appetizers')
-  const [drinksCat, setDrinksCat] = useState<DrinksCat>('tiki')
 
-  const searchParams = useSearchParams()
-  useEffect(() => {
-    setPanel(searchParams.get('tab') === 'drinks' ? 'drinks' : 'food')
-  }, [searchParams])
   const [modal, setModal] = useState<ModalState | null>(null)
 
   const d = lang === 'es' ? esFood : enFood
@@ -447,485 +378,126 @@ export default function MenuClient({ lang = 'en' }: { lang?: 'en' | 'es' }) {
 
       {/* Sticky Nav */}
       <div className="nm-sticky-nav">
-        <div className="nm-main-row">
-          <button className={`nm-main-btn${panel === 'food' ? ' active' : ''}`} onClick={() => setPanel('food')}>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 002-2V2M7 2v20M21 15V2M18 2c0 0 3 0 3 6s-3 6-3 6" />
-            </svg>
-            {d.panelFood}
-          </button>
-          <button className={`nm-main-btn${panel === 'drinks' ? ' active' : ''}`} onClick={() => setPanel('drinks')}>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M8 22h8M12 11v11M20 7H4l2 9h12z" /><path d="M4 7c0-2.2 1.8-4 4-4h8c2.2 0 4 1.8 4 4" />
-            </svg>
-            {d.panelDrinks}
-          </button>
-        </div>
         <div className="nm-cats-row">
-          {panel === 'food' && (
-            <div className="nm-cats-inner">
-              {d.cats.map((c) => (
-                <button key={c.id} className={`nm-cat-btn${foodCat === c.id ? ' active' : ''}`}
-                  onClick={() => { setFoodCat(c.id); scrollToSection(c.id) }}>
-                  {c.label}
-                </button>
-              ))}
-            </div>
-          )}
-          {panel === 'drinks' && (
-            <div className="nm-cats-inner">
-              {drinksCats.map((c) => (
-                <button key={c.id} className={`nm-cat-btn${drinksCat === c.id ? ' active' : ''}`}
-                  onClick={() => { setDrinksCat(c.id); scrollToSection(c.id) }}>
-                  {c.label}
-                </button>
-              ))}
-            </div>
-          )}
+          <div className="nm-cats-inner">
+            {d.cats.map((c) => (
+              <button key={c.id} className={`nm-cat-btn${foodCat === c.id ? ' active' : ''}`}
+                onClick={() => { setFoodCat(c.id); scrollToSection(c.id) }}>
+                {c.label}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
 
       {/* FOOD PANEL */}
-      {panel === 'food' && (
-        <>
-          <div className="nm-notes">
-            <div className="nm-notes-inner">
-              {d.topNotes.map((n) => <span key={n}>{n}</span>)}
-            </div>
+      <>
+        <div className="nm-notes">
+          <div className="nm-notes-inner">
+            {d.topNotes.map((n) => <span key={n}>{n}</span>)}
           </div>
-          <div className="nm-food-sections">
+        </div>
+        <div className="nm-food-sections">
 
-            <section className="nm-food-section" id="appetizers">
-              <SectionBanner src={banners.appetizers} title={catTitles['appetizers']} />
-              <div className="nm-grid">
-                {d.appetizers.map((item) => (
-                  <MenuCard key={item.name} item={item}
-                    onOpen={item.photo ? (i) => openModal(i, d.appetizers) : undefined} />
-                ))}
-              </div>
-            </section>
+          <section className="nm-food-section" id="appetizers">
+            <SectionBanner src={banners.appetizers} title={catTitles['appetizers']} />
+            <div className="nm-grid">
+              {d.appetizers.map((item) => (
+                <MenuCard key={item.name} item={item}
+                  onOpen={item.photo ? (i) => openModal(i, d.appetizers) : undefined} />
+              ))}
+            </div>
+          </section>
 
-            <section className="nm-food-section" id="seafood">
-              <SectionBanner src={banners.seafood} title={catTitles['seafood']} tall />
-              <div className="nm-grid">
-                {d.seafood.map((item) => (
-                  <MenuCard key={item.name} item={item}
-                    onOpen={item.photo ? (i) => openModal(i, d.seafood) : undefined} />
-                ))}
-              </div>
-              <p className="nm-steak-note">{d.seafoodNote}</p>
-            </section>
+          <section className="nm-food-section" id="seafood">
+            <SectionBanner src={banners.seafood} title={catTitles['seafood']} tall />
+            <div className="nm-grid">
+              {d.seafood.map((item) => (
+                <MenuCard key={item.name} item={item}
+                  onOpen={item.photo ? (i) => openModal(i, d.seafood) : undefined} />
+              ))}
+            </div>
+            <p className="nm-steak-note">{d.seafoodNote}</p>
+          </section>
 
-            <section className="nm-food-section" id="pasta">
-              <SectionBanner src={banners.pasta} title={catTitles['pasta']} />
-              <div className="nm-grid">
-                {d.pasta.map((item) => (
-                  <MenuCard key={item.name} item={item}
-                    onOpen={item.photo ? (i) => openModal(i, d.pasta) : undefined} />
-                ))}
-              </div>
-            </section>
+          <section className="nm-food-section" id="pasta">
+            <SectionBanner src={banners.pasta} title={catTitles['pasta']} />
+            <div className="nm-grid">
+              {d.pasta.map((item) => (
+                <MenuCard key={item.name} item={item}
+                  onOpen={item.photo ? (i) => openModal(i, d.pasta) : undefined} />
+              ))}
+            </div>
+          </section>
 
-            <section className="nm-food-section" id="white-meat">
-              <SectionBanner src={banners.whiteMeat} title={catTitles['white-meat']} />
-              <div className="nm-grid">
-                {d.whiteMeat.map((item) => (
-                  <MenuCard key={item.name} item={item}
-                    onOpen={item.photo ? (i) => openModal(i, d.whiteMeat) : undefined} />
-                ))}
-              </div>
-            </section>
+          <section className="nm-food-section" id="white-meat">
+            <SectionBanner src={banners.whiteMeat} title={catTitles['white-meat']} />
+            <div className="nm-grid">
+              {d.whiteMeat.map((item) => (
+                <MenuCard key={item.name} item={item}
+                  onOpen={item.photo ? (i) => openModal(i, d.whiteMeat) : undefined} />
+              ))}
+            </div>
+          </section>
 
-            <section className="nm-food-section" id="steaks">
-              <SectionBanner src={banners.steaks} title={catTitles['steaks']} tall />
-              <div className="nm-steak-grid">
-                {d.steaks.map((s) => (
-                  <PriceRow key={s.name} item={s}
-                    onOpen={s.photo ? (i) => openModal(i, d.steaks) : undefined} />
-                ))}
-              </div>
-              <p className="nm-steak-note">{d.steakNote}</p>
-            </section>
+          <section className="nm-food-section" id="steaks">
+            <SectionBanner src={banners.steaks} title={catTitles['steaks']} tall />
+            <div className="nm-steak-grid">
+              {d.steaks.map((s) => (
+                <PriceRow key={s.name} item={s}
+                  onOpen={s.photo ? (i) => openModal(i, d.steaks) : undefined} />
+              ))}
+            </div>
+            <p className="nm-steak-note">{d.steakNote}</p>
+          </section>
 
-            <section className="nm-food-section" id="vegetarian">
-              <SectionBanner src={banners.vegetarian} title={catTitles['vegetarian']} />
-              <div className="nm-grid">
-                {d.vegetarian.map((item) => (
-                  <MenuCard key={item.name} item={item}
-                    onOpen={item.photo ? (i) => openModal(i, d.vegetarian) : undefined} />
-                ))}
-              </div>
-            </section>
+          <section className="nm-food-section" id="vegetarian">
+            <SectionBanner src={banners.vegetarian} title={catTitles['vegetarian']} />
+            <div className="nm-grid">
+              {d.vegetarian.map((item) => (
+                <MenuCard key={item.name} item={item}
+                  onOpen={item.photo ? (i) => openModal(i, d.vegetarian) : undefined} />
+              ))}
+            </div>
+          </section>
 
-            <section className="nm-food-section" id="costa-rica">
-              <SectionBanner src={banners.costaRica} title={catTitles['costa-rica']} tall />
-              <div className="nm-grid">
-                {d.costaRica.map((item) => (
-                  <MenuCard key={item.name} item={item}
-                    onOpen={item.photo ? (i) => openModal(i, d.costaRica) : undefined} />
-                ))}
-              </div>
-            </section>
+          <section className="nm-food-section" id="costa-rica">
+            <SectionBanner src={banners.costaRica} title={catTitles['costa-rica']} tall />
+            <div className="nm-grid">
+              {d.costaRica.map((item) => (
+                <MenuCard key={item.name} item={item}
+                  onOpen={item.photo ? (i) => openModal(i, d.costaRica) : undefined} />
+              ))}
+            </div>
+          </section>
 
-            <section className="nm-food-section" id="desserts">
-              <SectionBanner src={banners.desserts} title={catTitles['desserts']} />
-              <div className="nm-dessert-grid">
-                {d.desserts.map((item) => (
-                  <div key={item.name}
-                    className={`nm-dessert-item${item.photo ? ' nm-card-clickable' : ''}`}
-                    onClick={item.photo ? () => openModal(item, d.desserts) : undefined}
-                    role={item.photo ? 'button' : undefined}
-                    tabIndex={item.photo ? 0 : undefined}
-                  >
-                    <span className="nm-dessert-name">{item.name}</span>
-                    <span className="nm-dessert-price">{item.price}</span>
-                  </div>
-                ))}
-              </div>
-            </section>
-
-            <div className="nm-food-notes">
-              {d.notes.map((n) => (
-                <div key={n} className="nm-food-note">
-                  <span className="nm-fn-icon">✦</span>
-                  <span>{n}</span>
+          <section className="nm-food-section" id="desserts">
+            <SectionBanner src={banners.desserts} title={catTitles['desserts']} />
+            <div className="nm-dessert-grid">
+              {d.desserts.map((item) => (
+                <div key={item.name}
+                  className={`nm-dessert-item${item.photo ? ' nm-card-clickable' : ''}`}
+                  onClick={item.photo ? () => openModal(item, d.desserts) : undefined}
+                  role={item.photo ? 'button' : undefined}
+                  tabIndex={item.photo ? 0 : undefined}
+                >
+                  <span className="nm-dessert-name">{item.name}</span>
+                  <span className="nm-dessert-price">{item.price}</span>
                 </div>
               ))}
             </div>
+          </section>
+
+          <div className="nm-food-notes">
+            {d.notes.map((n) => (
+              <div key={n} className="nm-food-note">
+                <span className="nm-fn-icon">✦</span>
+                <span>{n}</span>
+              </div>
+            ))}
           </div>
-        </>
-      )}
-
-      {/* DRINKS PANEL */}
-      {panel === 'drinks' && (
-        <div className="nm-drinks-sections">
-          <section className="nm-drinks-section" id="tiki">
-            <DrinksHeader title="Tiki Cocktails" subtitle={lang === 'es'
-              ? 'Escápate al trópico con nuestras vibrantes creaciones tiki — mezclas exóticas y audaces perfectamente equilibradas para transportarte al paraíso del sabor.'
-              : 'Escape to the tropics with our vibrant tiki creations — bold, exotic blends perfectly balanced to transport you to flavor paradise.'} />
-            {(() => {
-              const tikisEn: FoodItem[] = [
-                { name: 'Pura Vida', price: '₡8,000', desc: 'White rum, vodka, gin, pineapple juice, honey, lime and starfruit.', photo: CDN + '69ee79140d66f2a6656398cc.png' },
-                { name: 'Nanku', price: '₡8,000', desc: 'Dark rum, white rum, lime, cinnamon syrup and mango.', photo: CDN + '69ee744905d4199001c71026.png' },
-                { name: 'Julia', price: '₡8,000', desc: 'Aged rum, pineapple, ginger syrup, lime and cranberry juice.', photo: CDN + '69ee777f717d5dd4e12d8ee5.png' },
-                { name: 'A Cachete', price: '₡8,000', desc: 'Aged rum, watermelon and pineapple juice, cinnamon syrup, Malibu and blue curaçao.', photo: CDN + '69ee77ea05d4199001c7c357.png' },
-                { name: 'Tuanis', price: '₡8,000', desc: 'White rum, dark rum, lime, hibiscus syrup and ginger.', photo: CDN + '69ee76d2b0e5e2bb7ff40bd3.png' },
-                { name: 'Jack Sparrow', price: '₡8,000', desc: 'Campari, Jack Daniel\'s, passion fruit, ginger syrup and orange juice.', photo: CDN + '69ee78aa05d4199001c7e731.png' },
-                { name: 'Mai Tai', price: '₡8,000', desc: 'Rum, Cointreau, lime, sugar and horchata syrup.', photo: CDN + '69ee762e0d66f2a665630ced.png' },
-              ]
-              const tikisEs: FoodItem[] = [
-                { name: 'Pura Vida', price: '₡8,000', desc: 'Ron blanco, vodka, ginebra, jugo de piña, miel, limón y carambolo.', photo: CDN + '69ee79140d66f2a6656398cc.png' },
-                { name: 'Nanku', price: '₡8,000', desc: 'Ron oscuro, ron blanco, limón, jarabe de canela y mango.', photo: CDN + '69ee744905d4199001c71026.png' },
-                { name: 'Julia', price: '₡8,000', desc: 'Ron añejo, piña, jarabe de jengibre, limón y jugo de arándano.', photo: CDN + '69ee777f717d5dd4e12d8ee5.png' },
-                { name: 'A Cachete', price: '₡8,000', desc: 'Ron añejo, jugo de sandía y de piña, jarabe de canela, Malibu y curaçao azul.', photo: CDN + '69ee77ea05d4199001c7c357.png' },
-                { name: 'Tuanis', price: '₡8,000', desc: 'Ron blanco, ron oscuro, limón, jarabe de jamaica y jengibre.', photo: CDN + '69ee76d2b0e5e2bb7ff40bd3.png' },
-                { name: 'Jack Sparrow', price: '₡8,000', desc: 'Campari, Jack Daniel\'s, maracuyá, jarabe de jengibre y jugo de naranja.', photo: CDN + '69ee78aa05d4199001c7e731.png' },
-                { name: 'Mai Tai', price: '₡8,000', desc: 'Ron, Cointreau, limón, azúcar y jarabe de horchata.', photo: CDN + '69ee762e0d66f2a665630ced.png' },
-              ]
-              const tikis = lang === 'es' ? tikisEs : tikisEn
-              return (
-                <div className="nm-cktl-grid">
-                  {tikis.map((c) => c.photo ? (
-                    <div key={c.name}
-                      className="nm-cktl-card nm-cktl-card--photo nm-card-clickable"
-                      onClick={() => openModal(c, tikis.filter(t => t.name !== c.name && !!t.photo).slice(0, 4))}
-                      role="button"
-                      tabIndex={0}
-                      onKeyDown={(e) => e.key === 'Enter' && openModal(c, tikis.filter(t => t.name !== c.name && !!t.photo).slice(0, 4))}
-                    >
-                      <div className="nm-cktl-photo-wrap">
-                        <Image src={c.photo} alt={c.name} width={800} height={1000} style={{ width: '100%', height: 'auto', display: 'block' }} />
-                        <div className="nm-cktl-photo-overlay">
-                          <h3 className="nm-cktl-name">{c.name}</h3>
-                        </div>
-                      </div>
-                      <div className="nm-cktl-body">
-                        <span className="nm-cktl-price">{c.price}</span>
-                        <p className="nm-cktl-desc">{c.desc}</p>
-                      </div>
-                    </div>
-                  ) : (
-                    <div key={c.name} className="nm-cktl-card">
-                      <div className="nm-cktl-top">
-                        <h3 className="nm-cktl-name">{c.name}</h3>
-                        <span className="nm-cktl-price">{c.price}</span>
-                      </div>
-                      <p className="nm-cktl-desc">{c.desc}</p>
-                    </div>
-                  ))}
-                </div>
-              )
-            })()}
-          </section>
-
-          <section className="nm-drinks-section" id="cocteles">
-            <DrinksHeader title="Cócteles / Cocktails" />
-
-            <div className="nm-dsub">
-              <div className="nm-dsub-title">Los Sours</div>
-              <div className="nm-cktl-grid">
-                {[
-                  { name: 'Guaro Sour Clásico', price: '₡3,500', desc: 'Guaro, limón, jarabe simple.' },
-                  { name: 'Guaro Sour Arándanos', price: '₡4,500', desc: 'Guaro, arándanos, limón, sirope de moras.' },
-                  { name: 'Whiskey Sour', price: '₡4,500', desc: 'Clara de huevo, limón, jarabe simple, Ezra Brooks Bourbon.' },
-                ].map((c) => (
-                  <div key={c.name} className="nm-cktl-card">
-                    <div className="nm-cktl-top">
-                      <h3 className="nm-cktl-name">{c.name}</h3>
-                      <span className="nm-cktl-price">{c.price}</span>
-                    </div>
-                    <p className="nm-cktl-desc">{c.desc}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="nm-dsub">
-              <div className="nm-dsub-title">Margaritas</div>
-              <div className="nm-cktl-grid">
-                {[
-                  { name: 'Margarita Clásica', price: '₡4,000', desc: 'Tequila Jarana Blanco, triple sec, limón, jarabe simple.' },
-                  { name: 'Wild Passion Margarita', price: '₡4,500', desc: 'Infusión de tequila y jalapeño, triple sec, maracuyá y jarabe simple.' },
-                  { name: 'Margarita de Mango', price: '₡4,000', desc: 'Tequila Jarana Blanco, triple sec, mango, limón.' },
-                ].map((c) => (
-                  <div key={c.name} className="nm-cktl-card">
-                    <div className="nm-cktl-top">
-                      <h3 className="nm-cktl-name">{c.name}</h3>
-                      <span className="nm-cktl-price">{c.price}</span>
-                    </div>
-                    <p className="nm-cktl-desc">{c.desc}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="nm-dsub">
-              <div className="nm-dsub-title">With a Twist</div>
-              <div className="nm-cktl-grid">
-                {[
-                  { name: 'Tom Collins de Fresa y Tomillo', price: '₡4,000', desc: 'Ginebra Master\'s, limón, jarabe de fresa y tomillo, soda.' },
-                  { name: 'Gin Tonic de Mandarina', price: '₡4,500', desc: 'Ginebra Martin Miller\'s, rosas persas, jugo de mandarina, agua tónica.' },
-                  { name: 'Mula Tica', price: '₡4,500', desc: 'Guaro Cacique, limón, cerveza de jengibre.' },
-                ].map((c) => (
-                  <div key={c.name} className="nm-cktl-card">
-                    <div className="nm-cktl-top">
-                      <h3 className="nm-cktl-name">{c.name}</h3>
-                      <span className="nm-cktl-price">{c.price}</span>
-                    </div>
-                    <p className="nm-cktl-desc">{c.desc}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="nm-dsub">
-              <div className="nm-dsub-title">Los Clásicos / The Classics</div>
-              <div className="nm-cktl-grid">
-                {[
-                  { name: 'Mojito', price: '₡4,500', desc: 'Hierba buena fresca, limón, jarabe de hierba buena, ron blanco.' },
-                  { name: 'Piña Colada', price: '₡4,500', desc: 'Piña fresca, crema de coco, leche de coco, ron blanco.' },
-                  { name: 'Old Fashioned', price: '₡4,500', desc: 'Azúcar, amargos de angostura, Ezra Brooks Bourbon, cherry.' },
-                  { name: 'Negroni', price: '₡4,500', desc: 'Campari, Vermouth Rosso, Ginebra.' },
-                  { name: 'Aperol Spritz', price: '₡4,500', desc: 'Aperol, soda, vino espumante.' },
-                  { name: 'Long Island', price: '₡4,500', desc: 'Ron blanco, Vodka, Tequila, triple sec, ginebra, limón, azúcar, cola.' },
-                ].map((c) => (
-                  <div key={c.name} className="nm-cktl-card">
-                    <div className="nm-cktl-top">
-                      <h3 className="nm-cktl-name">{c.name}</h3>
-                      <span className="nm-cktl-price">{c.price}</span>
-                    </div>
-                    <p className="nm-cktl-desc">{c.desc}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
-
-          <section className="nm-drinks-section" id="vinos">
-            <DrinksHeader title="Vinos / Wines" />
-
-            <DSub title="Vino Espumoso / Sparkling Wine">
-              <WineRow name="Lunneta Prosecco DOC" detail="Veneto, Italia · Glera" price="₡19,500" />
-            </DSub>
-
-            <DSub title="Vinos Blancos / White Wine">
-              <WineRow name="Legaris DO Rueda" detail="España · Verdejo" price="₡19,000" />
-              <WineRow name="Cavit Valdobbiadene DOC" detail="Italia · Pinot Grigio" price="₡19,500" />
-              <WineRow name="Santa Rita Medalla Real Reserva" detail="DO Valle de Casa Blanca, Chile · Sauvignon Blanc" price="₡17,000" />
-              <WineRow name="Carmen Premier Reserva" detail="DO Valle de Casa Blanca, Chile · Chardonnay" price="₡18,500" />
-              <WineRow name="Santa Rita Medalla Real Reserva" detail="DO Valle de Limari, Chile · Chardonnay" price="₡17,000" />
-              <WineRow name="Carmen Gran Reserva" detail="DO Valle de Limari, Chile · Chardonnay" price="₡20,000" />
-            </DSub>
-
-            <DSub title="Vino Rosado / Rosé Wine">
-              <WineRow name="Domaines Paul Mass Jardin de Roses" detail="AOC Languedoc, Francia · Garnacha, Cinsaul & Syrah" price="₡20,000" />
-            </DSub>
-
-            <DSub title="Vinos Tintos / Red Wine">
-              <WineRow name="Cavit Red Blend, Trentino DOC" detail="Italia · Merlot, Cabernet & Teroldego" price="₡17,000" />
-              <WineRow name="Care Nouveau Blend, DO Cariñena" detail="España · Tempranillo, Garnacha & Cabernet Sauvignon" price="₡19,500" />
-              <WineRow name="Domaines Paul Reserva, IGT Pays d'Oc" detail="Francia · Pinot Noir" price="₡19,500" />
-              <WineRow name="Santa Rita Medalla Real Reserva" detail="DO Valle del Maipo, Chile · Cabernet Sauvignon" price="₡17,000" />
-              <WineRow name="Carmen Series Vintage Gran Reserva" detail="DO Alto Jahuel, Chile · Cabernet Sauvignon" price="₡21,500" />
-              <WineRow name="Legaris Crianza, DO Ribera del Duero" detail="España · Tempranillo" price="₡24,500" />
-              <WineRow name="Doña Paula Estate" detail="Valle de Uco, Argentina · Malbec" price="₡22,000" />
-              <WineRow name="Norton Altura" detail="Valle de Uco, Argentina · Malbec" price="₡26,500" />
-            </DSub>
-
-            <DSub title="Vino de la Casa / House Wine · Copa / Glass">
-              <DPriceRow name="Doña Paula Malbec, Argentina" price="₡4,500" />
-              <DPriceRow name="Carmen Merlot, Chile" price="₡4,500" />
-              <DPriceRow name="Carmen Cabernet Sauvignon, Chile" price="₡4,500" />
-              <DPriceRow name="Carmen Sauvignon Blanc, Chile" price="₡4,500" />
-              <DPriceRow name="Principato Pinot Grigio, Italia" price="₡4,500" />
-              <DPriceRow name="Carmen Chardonnay, Chile" price="₡4,500" />
-            </DSub>
-          </section>
-
-          <section className="nm-drinks-section" id="licores">
-            <DrinksHeader title="Licores / Liqueur" />
-            <DSub title="Whiskey">
-              <DPriceRow name="Macallan 12 años" price="₡10,500" />
-              <DPriceRow name="Glen Fiddich 12 años" price="₡5,500" />
-              <DPriceRow name="Old Parr 12 años" price="₡4,000" />
-              <DPriceRow name="Old Parr 18 años" price="₡7,200" />
-              <DPriceRow name="Buchanan's 12 años" price="₡4,000" />
-              <DPriceRow name="Buchanan's 18 años" price="₡7,200" />
-              <DPriceRow name="Crown Royal" price="₡4,000" />
-              <DPriceRow name="Maker's Mark" price="₡4,000" />
-              <DPriceRow name="Jameson" price="₡4,000" />
-              <DPriceRow name="Jack Daniel's" price="₡4,000" />
-              <DPriceRow name="Jim Beam" price="₡4,000" />
-              <DPriceRow name="Chivas Regal 12 años" price="₡4,000" />
-              <DPriceRow name="Chivas Regal 18 años" price="₡7,200" />
-            </DSub>
-            <DSub title="Tequilas">
-              <DPriceRow name="Patrón Reposado" price="₡5,500" />
-              <DPriceRow name="Patrón Añejo" price="₡6,500" />
-              <DPriceRow name="Patrón Silver" price="₡5,500" />
-              <DPriceRow name="Don Julio 70" price="₡9,000" />
-              <DPriceRow name="Don Julio Reposado" price="₡5,500" />
-              <DPriceRow name="Don Julio Añejo" price="₡7,000" />
-              <DPriceRow name="1800 Silver" price="₡4,000" />
-              <DPriceRow name="1800 Reposado" price="₡4,000" />
-              <DPriceRow name="1800 Añejo" price="₡5,300" />
-              <DPriceRow name="Montes Lobos" price="₡5,500" />
-            </DSub>
-            <DSub title="Ginebras / Gin">
-              <DPriceRow name="Bombay" price="₡4,400" />
-              <DPriceRow name="Hendrick's" price="₡4,400" />
-              <DPriceRow name="Tanqueray" price="₡3,500" />
-              <DPriceRow name="Beefeater" price="₡3,500" />
-              <DPriceRow name="Martin Miller's" price="₡4,400" />
-              <DPriceRow name="Tanqueray Ten" price="₡4,400" />
-              <DPriceRow name="Bulldog" price="₡4,400" />
-            </DSub>
-            <DSub title="Vodka">
-              <DPriceRow name="Absolut" price="₡3,500" />
-              <DPriceRow name="Stolichnaya" price="₡3,000" />
-              <DPriceRow name="Grey Goose" price="₡4,500" />
-              <DPriceRow name="Tito's" price="₡3,500" />
-              <DPriceRow name="Ketel One" price="₡4,000" />
-              <DPriceRow name="Cîroc" price="₡4,500" />
-            </DSub>
-            <DSub title="Aperitivo & Digestivo">
-              <DPriceRow name="Jägermeister" price="₡2,500" />
-              <DPriceRow name="Licor 43" price="₡2,500" />
-              <DPriceRow name="Cointreau" price="₡4,000" />
-              <DPriceRow name="Grand Marnier" price="₡4,500" />
-              <DPriceRow name="Café Rica" price="₡3,500" />
-              <DPriceRow name="Disaronno" price="₡3,500" />
-              <DPriceRow name="Frangelico" price="₡3,500" />
-              <DPriceRow name="Baileys" price="₡3,500" />
-              <DPriceRow name="Midori" price="₡3,000" />
-              <DPriceRow name="Fireball" price="₡3,500" />
-            </DSub>
-            <DSub title="Coñac / Cognac">
-              <DPriceRow name="Courvoisier VS" price="₡5,000" />
-              <DPriceRow name="Courvoisier VSOP" price="₡7,000" />
-              <DPriceRow name="Hennessy VSOP" price="₡10,000" />
-            </DSub>
-            <DSub title="Rones / Rum">
-              <DPriceRow name="Capitán Morgan" price="₡2,500" />
-              <DPriceRow name="Centenario 7 años" price="₡3,500" />
-              <DPriceRow name="Flor de Caña 7 años" price="₡3,000" />
-              <DPriceRow name="Flor de Caña 12 años" price="₡4,300" />
-              <DPriceRow name="Flor de Caña 18 años" price="₡5,500" />
-              <DPriceRow name="Centenario 20 años" price="₡5,500" />
-              <DPriceRow name="Zacapa 23 años" price="₡5,900" />
-              <DPriceRow name="Cachaça" price="₡2,500" />
-              <DPriceRow name="Cacique" price="₡2,000" />
-              <DPriceRow name="Appleton Estate" price="₡4,000" />
-            </DSub>
-          </section>
-
-          <section className="nm-drinks-section" id="cervezas">
-            <DrinksHeader title="Cervezas / Beer" />
-            <DSub title="Artesanal Local en Sifón / Local Craft on Draft">
-              <DPriceRow name="Indómito IPA 7.6%" price="₡4,500" />
-              <DPriceRow name="Libertas Golden Ale 4.3%" price="₡4,500" />
-              <DPriceRow name="Segua Red Ale 4.8%" price="₡4,500" />
-              <DPriceRow name="Nanku Premium Lager 4.3%" price="₡4,500" />
-              <DPriceRow name="Passion de Maracuyá" price="₡4,500" />
-            </DSub>
-            <DSub title="Artesanal Local en Botella / Local Craft on Bottle">
-              <DPriceRow name="Mama Candela" price="₡4,500" />
-            </DSub>
-            <DSub title="Cerveza sin Gluten / Gluten-Free Beer">
-              <DPriceRow name="Daura Damm" price="₡3,000" />
-            </DSub>
-            <DSub title="Las Lager">
-              <DPriceRow name="Imperial" price="₡1,900" />
-              <DPriceRow name="Imperial Silver" price="₡1,900" />
-              <DPriceRow name="Imperial Light" price="₡1,900" />
-              <DPriceRow name="Imperial Ultra" price="₡1,900" />
-              <DPriceRow name="Pilsen" price="₡1,900" />
-              <DPriceRow name="Bavaria Gold" price="₡2,200" />
-              <DPriceRow name="Bavaria Light" price="₡2,200" />
-            </DSub>
-            <DSub title="Importadas / Imported">
-              <DPriceRow name="Heineken" price="₡2,200" />
-              <DPriceRow name="Corona" price="₡2,200" />
-              <DPriceRow name="Sol" price="₡2,200" />
-            </DSub>
-          </section>
-
-          <section className="nm-drinks-section" id="bebidas">
-            <DrinksHeader title="Gaseosas & Aguas / Soft Drinks & Water" />
-            <DSub title="Agua / Water">
-              <DPriceRow name="Agua con gas grande / Large Sparkling Water" price="₡3,500" />
-              <DPriceRow name="Agua con gas pequeña / Small Sparkling Water" price="₡2,200" />
-              <DPriceRow name="Agua grande / Large Water" price="₡3,500" />
-              <DPriceRow name="Agua pequeña / Small Water" price="₡1,500" />
-            </DSub>
-            <DSub title="Gaseosas / Soft Drinks">
-              <DPriceRow name="Coca Cola / Coke" price="₡1,800" />
-              <DPriceRow name="Coca Cola Cero / Coke Zero" price="₡1,800" />
-              <DPriceRow name="Ginger Ale" price="₡1,800" />
-              <DPriceRow name="Fresco" price="₡1,800" />
-              <DPriceRow name="Fanta Naranja / Orange Fanta" price="₡1,800" />
-              <DPriceRow name="Fanta Uva / Grape Fanta" price="₡1,800" />
-              <DPriceRow name="Fanta Kolita / Red Fanta" price="₡1,800" />
-              <DPriceRow name="Sprite" price="₡1,800" />
-            </DSub>
-            <div className="nm-dsub">
-              <div className="nm-dsub-title">Batidos de Frutas / Fruit Smoothies</div>
-              <p className="nm-batidos-note">Sabores / Flavors: Mango · Mora/Blackberry · Fresa/Strawberry · Banano · Guanábana/Soursop · Maracuyá/Passion Fruit · Piña/Pineapple</p>
-              <div className="nm-dprice-grid">
-                <DPriceRow name="1 Fruta / 1 Fruit" price="₡1,500" />
-                <DPriceRow name="2 Frutas / 2 Fruits" price="₡2,000" />
-                <DPriceRow name="Mixto / Mixed" price="₡2,500" />
-              </div>
-            </div>
-            <DSub title="Limonadas / Lemonade">
-              <DPriceRow name="Limonada / Lemonade" price="₡1,500" />
-              <DPriceRow name="Limonada con Hierba Buena / Lemonade with Mint" price="₡2,000" />
-              <DPriceRow name="Limonada con Gengibre / Ginger Lemonade" price="₡2,000" />
-            </DSub>
-          </section>
-
         </div>
-      )}
+      </>
 
       {/* Mobile sticky reserve CTA */}
       <div className="nm-sticky-reserve">

@@ -48,7 +48,6 @@ export default function Navbar({ lang = 'en', activePage }: NavbarProps) {
       ? [
           { href: `/es/#experience`, label: 'Experiencia' },
           { href: `${base}/menu`, label: 'Menú' },
-          { href: `/es/menu?tab=drinks`, label: 'Cócteles' },
           { href: `${base}/live-music`, label: 'Música en Vivo' },
           { href: `${base}/about`, label: 'Nosotros' },
           { href: `/es/#reservations`, label: 'Reservaciones' },
@@ -56,7 +55,6 @@ export default function Navbar({ lang = 'en', activePage }: NavbarProps) {
       : [
           { href: '/#experience', label: 'Experience' },
           { href: '/menu', label: 'Menu' },
-          { href: '/menu?tab=drinks', label: 'Cocktails' },
           { href: '/live-music', label: 'Live Music' },
           { href: '/about', label: 'About' },
           { href: '/#reservations', label: 'Reservations' },
